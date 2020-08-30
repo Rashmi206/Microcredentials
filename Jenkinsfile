@@ -38,5 +38,23 @@ pipeline {
 				bat 'cd ./car-service/ && mvn test'
             }
         }
+	    stage('Run Discovery Service') {
+            steps {
+                echo 'Running Discovery Service...'
+				bat 'cd ./discovery-service/ && mvn spring-boot:run'
+            }
+        }
+        stage('Run API Gateway') {
+            steps {
+                echo 'Running API Gateway...'
+				bat 'cd ./api-gateway/ && mvn spring-boot:run'
+            }
+        }
+		stage('Run Car Service') {
+            steps {
+                echo 'Running Car Service...'
+				bat 'cd ./car-service/ && mvn spring-boot:run'
+            }
+        }
     }
 }
