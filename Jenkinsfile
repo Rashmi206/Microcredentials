@@ -42,7 +42,7 @@ pipeline {
 		stage('Push Image to Dockerhub'){
 			steps{
 				
-					bat 'cat ./password.txt | docker login --username rk20 --password-stdin && docker-compose build && docker-compose push'
+					bat 'docker login --username rk20 --password-stdin < ./password.txt && docker-compose build && docker-compose push'
 				
 			}
 		}
