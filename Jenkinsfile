@@ -1,4 +1,9 @@
 pipeline {
+	environment { 
+		registry = "rk20" 
+		registryCredential = 'docker-credentials'
+	}	
+
     agent any
 
     stages {
@@ -38,6 +43,12 @@ pipeline {
 				bat 'cd ./car-service/ && mvn test'
             }
         }
+		stage('Push Image to Dockerhub'){
+			steps{
+				bat 'docker-compose build && docker-compose push'
+			}
+		}
+		
         stage('Deploy') {
             steps {
                 echo 'Deploying the application...'
