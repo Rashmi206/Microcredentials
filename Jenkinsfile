@@ -1,9 +1,5 @@
 pipeline {
-	environment { 
-		registry = "rk20/discovery-service" 
-		registryCredential = 'docker-credentials'
-	}	
-
+	
     agent any
 
     stages {
@@ -45,7 +41,9 @@ pipeline {
         }
 		stage('Push Image to Dockerhub'){
 			steps{
-				bat 'docker-compose build && docker-compose push'
+				withDockerRegistry([ credentialsId: "docker-credentials", url: "" ]) {
+					bat 'docker-compose build && docker-compose push'
+				}
 			}
 		}
 		
