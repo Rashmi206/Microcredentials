@@ -1,6 +1,6 @@
 pipeline {
 	environment { 
-		registry = "rk20" 
+		registry = "rk20/discovery-service" 
 		registryCredential = 'docker-credentials'
 	}	
 
