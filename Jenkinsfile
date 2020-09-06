@@ -41,7 +41,7 @@ pipeline {
         }
 		stage('Push Image to Dockerhub'){
 			steps{
-				withDockerRegistry([ credentialsId: "docker-credentials"]) {
+				withDockerRegistry([ credentialsId: "docker-credentials", url:""]) {
 					bat 'docker-compose build && docker-compose push'
 				}
 			}
