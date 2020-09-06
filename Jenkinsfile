@@ -38,5 +38,11 @@ pipeline {
 				bat 'cd ./car-service/ && mvn test'
             }
         }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying the application...'
+				bat 'docker-compose up --build -d'
+            }
+        }
     }
 }
