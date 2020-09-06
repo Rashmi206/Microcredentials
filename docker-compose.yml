@@ -1,0 +1,25 @@
+version: '3'
+services:
+  discovery-service:
+    build: discovery-service
+    ports:
+      - 8761:8761
+  car-service:
+    build: car-service
+    environment: 
+      - eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka/
+    ports:
+      - 8090:8090
+    depends_on:
+      - discovery-service
+  api-gateway:
+    build: api-gateway
+    environment: 
+      - eureka.client.serviceUrl.defaultZone=http://discovery-service:8761/eureka/
+      - zuul.routes.car-service.url=http://car-service:8090
+      - zuul.routes.home.url=http://car-service:8090
+    ports:
+      - 8080:8080
+    depends_on:
+      - discovery-service
+      - car-service
