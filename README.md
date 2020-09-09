@@ -42,3 +42,13 @@ Then, navigate to `http://localhost:8080/cool-cars` in your browser, log in with
 
 ## Flowchart
 ![alt text](Flowchart.png?raw=true)
+
+## Snapshots
+### Jenkins Pipeline
+![alt text](JenkinsPipeline.png?raw=true)
+
+### Eureka Server 
+![alt text](Eureka.png?raw=true)
+
+### API Response
+![alt text](APIResponse.png?raw=true)
