@@ -49,7 +49,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying the application...'
-				bat 'docker-compose pull api-gateway && docker-compose up -d'
+				bat 'echo "$dockerhubPassword" docker login --username rk20 --password-stdin && docker-compose pull api-gateway && docker-compose up -d'
             }
         }
     }
