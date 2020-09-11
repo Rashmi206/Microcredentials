@@ -18,6 +18,6 @@ public class HomeController {
         String username = principal.getName();
         JwtAuthenticationToken token = (JwtAuthenticationToken) principal;
         log.info("claims: " + token.getTokenAttributes());
-        return "Hello, " + username;
+        return "Hello, Welcome to HomeController" + username;
     }
 }
